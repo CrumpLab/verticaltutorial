@@ -1,0 +1,110 @@
+---
+title: "Writing APA papers in R Markdown with papaja"
+subtitle: "A brief tutorial"
+author: "Matthew Crump"
+date: "10/31/2019"
+css: custom.css
+output:
+  slidy_presentation:
+    self_contained: false
+    theme: yeti
+    incremental: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, 
+                      warning=FALSE, 
+                      message=FALSE, 
+                      fig.align = "center", 
+                      cache = FALSE, 
+                      out.width = "100%")
+```
+
+## What is papaja
+
+`papaja` is an R package written by Frederick Aust & Marius Barth.
+
+`papaja` provides an R Markdown template for writing APA papers that can be compiled to .pdf or word document formats
+
+## papaja documentation
+
+The documentation for using papaja is here 
+
+> - <https://crsh.github.io/papaja_man/>
+> - as a sidenote, this is also an online book written in R markdown and compiled with the `bookdown` package
+  
+## Installing papaja
+
+> 1. Make sure you have `devtools` installed. `papaja` is not on CRAN, and we use devtools to install the package from Github.
+
+```{r, eval=FALSE, echo=TRUE}
+install.packages("devtools")
+```
+  
+> 2. Install Latex (for rendering to pdf). Note, rather than installing a full distribution, we can use the `tinytex` package which will install the components we need as we need them.
+
+```{r, eval=FALSE, echo=TRUE}
+install.packages("tinytex")
+tinytex::install_tinytex()
+```
+
+> 3. Install `papaja`
+
+```{r, eval=FALSE, echo=TRUE}
+devtools::install_github("crsh/papaja")
+```
+
+## Writing an APA paper with papaja
+
+```{r}
+knitr::include_graphics("imgs/papaja/rmdTopdf.png")
+```
+
+## papaja process diagram
+
+```{r, out.width="50%"}
+knitr::include_graphics("imgs/papaja/compilation_process.png")
+```
+
+## A Walkthrough
+
+> 1. Let's go through the papaja documentation
+> 2. And, look at the example `manuscript.Rmd` file in the `manuscript/` folder.
+
+## Additional considerations/tips
+
+> 1. set classoption to "man" for double-spaced draft style, or to "jou" for two-column apa-journal style.
+
+> 2. We recommend placing raw data in the `data-raw` folder, and including a pre-processing script showing how the data is loaded into R. In this example, I also added the resulting dataframe to the R package for this tutorial, and then loaded the package in the manuscript to load the pre-processed data.
+
+> 3. There other many strategies for creating a reproducible analysis. A large paper may have many code chunks and become unwieldly. It is possible to run the analysis scripts outside of the main document. For example, an analysis script might save R variables in an .RData or .Rda file, which can then be loaded in the main manuscript for reporting.
+
+## Zotero
+
+Consider using Zotero as a free and very useful citation manager <https://www.zotero.org>
+
+## Multi column
+
+<div class = "row">
+<div class = "col-md-6">
+
+
+</div>
+<div class = "col-md-6">
+
+
+</div>
+</div>
+
+
+
+- basic idea of rmarkdown
+  - Rstudio overview
+    -
+- make a new rmd
+  - working in a project
+- knitting
+
+
+
+

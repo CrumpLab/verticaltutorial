@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="Matthew Crump" />
+  <meta name="date" content="2019-10-31" />
+  <title>Writing APA papers in R Markdown with papaja</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <script src="apa_papers_files/jquery-1.11.3/jquery.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="apa_papers_files/bootstrap-3.3.5/css/yeti.min.css" rel="stylesheet" />
+  <script src="apa_papers_files/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+  <script src="apa_papers_files/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+  <script src="apa_papers_files/bootstrap-3.3.5/shim/respond.min.js"></script>
+  <link href="apa_papers_files/slidy-2/styles/slidy.css" rel="stylesheet" />
+  <script src="apa_papers_files/slidy-2/scripts/slidy.js"></script>
+  <link rel="stylesheet" type="text/css" media="screen, projection, print"
+   href="custom.css" />
+</head>
+<body>
+<div class="slide titlepage">
+  <h1 class="title">Writing APA papers in R Markdown with papaja</h1>
+  <h1 class="subtitle">A brief tutorial</h1>
+  <p class="author">
+Matthew Crump
+  </p>
+  <p class="date">10/31/2019</p>
+</div>
+<div id="what-is-papaja" class="slide section level2">
+<h1>What is papaja</h1>
+<p><code>papaja</code> is an R package written by Frederick Aust &amp; Marius Barth.</p>
+<p><code>papaja</code> provides an R Markdown template for writing APA papers that can be compiled to .pdf or word document formats</p>
+</div>
+<div id="papaja-documentation" class="slide section level2">
+<h1>papaja documentation</h1>
+<p>The documentation for using papaja is here</p>
+<ul>
+<li><a href="https://crsh.github.io/papaja_man/" class="uri">https://crsh.github.io/papaja_man/</a></li>
+<li>as a sidenote, this is also an online book written in R markdown and compiled with the <code>bookdown</code> package</li>
+</ul>
+</div>
+<div id="installing-papaja" class="slide section level2">
+<h1>Installing papaja</h1>
+<ol style="list-style-type: decimal">
+<li>Make sure you have <code>devtools</code> installed. <code>papaja</code> is not on CRAN, and we use devtools to install the package from Github.</li>
+</ol>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">install.packages</span>(<span class="st">&quot;devtools&quot;</span>)</span></code></pre></div>
+<ol start="2" style="list-style-type: decimal">
+<li>Install Latex (for rendering to pdf). Note, rather than installing a full distribution, we can use the <code>tinytex</code> package which will install the components we need as we need them.</li>
+</ol>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">install.packages</span>(<span class="st">&quot;tinytex&quot;</span>)</span>
+<span id="cb2-2"><a href="#cb2-2"></a>tinytex<span class="op">::</span><span class="kw">install_tinytex</span>()</span></code></pre></div>
+<ol start="3" style="list-style-type: decimal">
+<li>Install <code>papaja</code></li>
+</ol>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;crsh/papaja&quot;</span>)</span></code></pre></div>
+</div>
+<div id="writing-an-apa-paper-with-papaja" class="slide section level2">
+<h1>Writing an APA paper with papaja</h1>
+<p><img src="imgs/papaja/rmdTopdf.png" width="100%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="papaja-process-diagram" class="slide section level2">
+<h1>papaja process diagram</h1>
+<p><img src="imgs/papaja/compilation_process.png" width="50%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="a-walkthrough" class="slide section level2">
+<h1>A Walkthrough</h1>
+<ol style="list-style-type: decimal">
+<li>Let’s go through the papaja documentation</li>
+<li>And, look at the example <code>manuscript.Rmd</code> file in the <code>manuscript/</code> folder.</li>
+</ol>
+</div>
+<div id="additional-considerationstips" class="slide section level2">
+<h1>Additional considerations/tips</h1>
+<ol style="list-style-type: decimal">
+<li>set classoption to “man” for double-spaced draft style, or to “jou” for two-column apa-journal style.</li>
+</ol>
+<ol start="2" style="list-style-type: decimal">
+<li>We recommend placing raw data in the <code>data-raw</code> folder, and including a pre-processing script showing how the data is loaded into R. In this example, I also added the resulting dataframe to the R package for this tutorial, and then loaded the package in the manuscript to load the pre-processed data.</li>
+</ol>
+<ol start="3" style="list-style-type: decimal">
+<li>There other many strategies for creating a reproducible analysis. A large paper may have many code chunks and become unwieldly. It is possible to run the analysis scripts outside of the main document. For example, an analysis script might save R variables in an .RData or .Rda file, which can then be loaded in the main manuscript for reporting.</li>
+</ol>
+</div>
+<div id="zotero" class="slide section level2">
+<h1>Zotero</h1>
+<p>Consider using Zotero as a free and very useful citation manager <a href="https://www.zotero.org" class="uri">https://www.zotero.org</a></p>
+</div>
+<div id="multi-column" class="slide section level2">
+<h1>Multi column</h1>
+<div class="row">
+<div class="col-md-6">
+
+</div>
+<div class="col-md-6">
+
+</div>
+</div>
+<ul class="incremental">
+<li>basic idea of rmarkdown
+<ul class="incremental">
+<li><h2 id="rstudio-overview">Rstudio overview</h2></li>
+</ul></li>
+<li>make a new rmd
+<ul class="incremental">
+<li>working in a project</li>
+</ul></li>
+<li>knitting</li>
+</ul>
+</div>
+
+  <!-- dynamically load mathjax for compatibility with self-contained -->
+  <script>
+    (function () {
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+      document.getElementsByTagName("head")[0].appendChild(script);
+    })();
+  </script>
+
+</body>
+</html>

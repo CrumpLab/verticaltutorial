@@ -1,0 +1,21 @@
+This is some plain text.
+
+```{r}
+#An R code chunk
+1+1
+mean(1:10)
+```
+
+Can easily include plots
+
+```{r}
+hist(rnorm(100,0,1))
+```
+
+`knitr` options in the code chunk control output:
+
+```{r, echo=FALSE}
+# code is not displayed
+seq(1:5)
+```
+
