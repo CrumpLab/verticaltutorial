@@ -7,6 +7,6 @@
 \ifnextchar[{\eatarg}{}
 
 \centering
-\includegraphics{manuscript_files/figure-latex/stroopfig-1.pdf}
+\includegraphics{/Users/mattcrump/Dropbox (Brooklyn College)/Research/Presentations/verticaltutorial/docs/manuscript/manuscript_files/figure-latex/stroopfig-1.pdf}
 \caption{\label{fig:stroopfig}Mean reaction times wth standard error bars as a function of Posture and Congruency for Experiment 3}
 \end{figure*}

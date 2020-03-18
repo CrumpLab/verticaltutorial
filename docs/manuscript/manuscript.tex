@@ -3,7 +3,7 @@
 \PassOptionsToPackage{hyphens}{url}
 %
 \documentclass[
-  man,floatsintext]{apa6}
+  man]{apa6}
 \usepackage{lmodern}
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
@@ -84,6 +84,12 @@
 \newcommand{\getlongtablewidth}{\begingroup \ifcsname LT@\roman{LT@tables}\endcsname \global\longtablewidth=0pt \renewcommand{\LT@entry}[2]{\global\advance\longtablewidth by ##2\relax\gdef\LastLTentrywidth{##2}}\@nameuse{LT@\roman{LT@tables}} \fi \endgroup}
 
 
+\DeclareDelayedFloatFlavor{ThreePartTable}{table}
+\DeclareDelayedFloatFlavor{lltable}{table}
+\DeclareDelayedFloatFlavor*{longtable}{table}
+\makeatletter
+\renewcommand{\efloat@iwrite}[1]{\immediate\expandafter\protected@write\csname efloat@post#1\endcsname{}}
+\makeatother
 \usepackage{lineno}
 
 \linenumbers
@@ -229,7 +235,7 @@ Stand & 808 & 15 & 904 & 15\\
 
 \begin{figure}
 \centering
-\includegraphics{manuscript_files/figure-latex/stroopfig-1.pdf}
+\includegraphics{/Users/mattcrump/Dropbox (Brooklyn College)/Research/Presentations/verticaltutorial/docs/manuscript/manuscript_files/figure-latex/stroopfig-1.pdf}
 \caption{\label{fig:stroopfig}Mean reaction times wth standard error bars as a function of Posture and Congruency for Experiment 3}
 \end{figure}
 

@@ -91,7 +91,7 @@ Quisque dapibus sem non fringilla volutpat. Sed finibus magna et eros pharetra p
 
 Citations are similar to Latex. Place bibliographic entries in a .bib file, then link to the .bib file in the YAML above. This example uses `example.bib`. Use a reference manager like Zotero to export bib files for collections of manuscripts, or write them by hand, or copy and paste from google scholar.
 
-An example of citing a paper with author year in parenthese [@crumpContextualControlTaskset2010]. Separate citation keys with semicolons to add multiple citations [@crumpContextualControlTaskset2010;@jamiesonMemorybasedAccountRetrospective2010]. 
+An example of citing a paper with author year in parentheses [@crumpContextualControlTaskset2010]. Separate citation keys with semicolons to add multiple citations [@crumpContextualControlTaskset2010;@jamiesonMemorybasedAccountRetrospective2010]. 
 
 To cite the author alone with year in parentheses use @crumpContextualControlTaskset2010. To cite year only, use [-@crumpContextualControlTaskset2010].
 
