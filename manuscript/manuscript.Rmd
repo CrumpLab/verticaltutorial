@@ -8,8 +8,14 @@ author:
     corresponding : yes    # Define only one corresponding author
     address       : "Postal address"
     email         : "my@email.com"
+    role:         # Contributorship roles (e.g., CRediT, https://casrai.org/credit/)
+      - Conceptualization
+      - Writing - Original Draft Preparation
+      - Writing - Review & Editing
   - name          : "Ernst-August Doelle"
     affiliation   : "1,2"
+    role:
+      - Writing - Review & Editing
 
 affiliation:
   - id            : "1"
@@ -44,7 +50,7 @@ wordcount         : "X"
 
 bibliography      : ["r-references.bib","example.bib"]
 
-floatsintext      : no
+floatsintext      : yes
 figurelist        : no
 tablelist         : no
 footnotelist      : no
@@ -65,7 +71,9 @@ library("papaja") # loads the papaja library
 ```{r analysis-preferences}
 # Seed for random number generation
 set.seed(42)
-knitr::opts_chunk$set(cache.extra = knitr::rand_seed) # this line sets global knitr chunk options.
+knitr::opts_chunk$set(cache.extra = knitr::rand_seed,
+                      message = FALSE,
+                      warning = FALSE) # this line sets global knitr chunk options.
 ```
 
 This text is for the body of the introduction. This is how you **bold** text. This is *italics*. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer fringilla orci odio, eget venenatis diam aliquet nec. [^f1] Vivamus sodales aliquam tortor ac scelerisque. Nullam laoreet est id dolor rhoncus bibendum. Etiam eleifend, tortor vel euismod ullamcorper, nunc enim lacinia eros, at semper nulla arcu eget est. Pellentesque dapibus euismod sem, sed sollicitudin nisi blandit ac. Quisque dapibus lorem id felis cursus, id placerat magna dapibus. Sed id nibh dictum, tristique nulla non, tempor ipsum. [^thing2]

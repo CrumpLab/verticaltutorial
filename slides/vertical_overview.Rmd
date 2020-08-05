@@ -21,6 +21,10 @@ library(nomnoml)
 - Motivation: a few reasons to adopt a reproducible workflow
 - Explanation: reproducible workflows in R with vertical
 
+
+- vertical links: <https://crumplab.github.io/vertical/>
+- this tutorial: <https://crumplab.github.io/verticaltutorial/>
+
 ## Motivation: Validating your assertions
 
 In science we do things and communicate what we did.
@@ -126,20 +130,6 @@ Build the project website:
 vertical::build_vertical()
 ```
 
-
-
-## Multi column
-
-<div class = "row">
-<div class = "col-md-6">
-
-
-</div>
-<div class = "col-md-6">
-
-
-</div>
-</div>
 
 
 

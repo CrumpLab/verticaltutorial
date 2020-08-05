@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="Matthew Crump" />
+  <meta name="date" content="2019-10-31" />
+  <title>Creating content with R Markdown</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <script src="RMarkdown_files/header-attrs-2.3/header-attrs.js"></script>
+  <script src="RMarkdown_files/jquery-1.11.3/jquery.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="RMarkdown_files/bootstrap-3.3.5/css/yeti.min.css" rel="stylesheet" />
+  <script src="RMarkdown_files/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+  <script src="RMarkdown_files/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+  <script src="RMarkdown_files/bootstrap-3.3.5/shim/respond.min.js"></script>
+  <link href="RMarkdown_files/slidy-2/styles/slidy.css" rel="stylesheet" />
+  <script src="RMarkdown_files/slidy-2/scripts/slidy.js"></script>
+  <script src="RMarkdown_files/slidy_shiny-1/slidy_shiny.js"></script>
+  <link rel="stylesheet" type="text/css" media="screen, projection, print"
+   href="custom.css" />
+</head>
+<body>
+<div class="slide titlepage">
+  <h1 class="title">Creating content with R Markdown</h1>
+  <h1 class="subtitle">A brief tutorial</h1>
+  <p class="author">
+Matthew Crump
+  </p>
+  <p class="date">10/31/2019</p>
+</div>
+<div id="what-is-r-markdown" class="slide section level2">
+<h1>What is R Markdown?</h1>
+<p>Let’s take the R Markdown quick tour from RStudio <a href="https://rmarkdown.rstudio.com/authoring_quick_tour.html" class="uri">https://rmarkdown.rstudio.com/authoring_quick_tour.html</a></p>
+<ul class="incremental">
+<li>In brief, R Markdown combines plain text with R code, allowing both to be outputted to a variety of document types, formats and styles (e.g., APA papers, slides, posters, etc.)</li>
+</ul>
+</div>
+<div id="the-definitive-r-markdown-guide" class="slide section level2">
+<h1>The definitive R Markdown guide</h1>
+<p>For a comprehensive guide to R Markdown see the definitive guide:</p>
+<p><a href="https://bookdown.org/yihui/rmarkdown/">https://bookdown.org/yihui/rmarkdown/</a></p>
+<ul class="incremental">
+<li><p>and, a nice guide to basic markdown syntax: <a href="https://www.markdownguide.org/basic-syntax/" class="uri">https://www.markdownguide.org/basic-syntax/</a></p></li>
+<li><p>bells and whistles: <a href="https://holtzy.github.io/Pimp-my-rmd/" class="uri">https://holtzy.github.io/Pimp-my-rmd/</a></p></li>
+</ul>
+</div>
+<div id="r-markdown-and-reproducible-science" class="slide section level2">
+<h1>R Markdown and reproducible science</h1>
+<ul class="incremental">
+<li><p>R Markdown is a good option for reproducible science.</p></li>
+<li><p>R Markdown documents can contain all of the text for a manuscript, and all of the code used to run analyses and report results, all in one place.</p></li>
+<li><p>Thus, if you share your research in R markdown, someone else should be able to reproduce exactly what you did.</p></li>
+</ul>
+</div>
+<div id="creating-a-new-r-markdown-document-from-rstudio" class="slide section level2">
+<h1>Creating a new R Markdown document from RStudio</h1>
+<video id="rmarkdown" src="imgs/newRmarkdown.mov" controls>
+</video>
+</div>
+<div id="example-reproducible-analysis-with-r-markdown" class="slide section level2">
+<h1>Example: Reproducible analysis with R Markdown</h1>
+<div class="row">
+<div class="col-md-6">
+<p><img src="/Users/mattcrump/Github/verticaltutorial/slides/imgs/Rmarkdown/cars.png" width="100%" style="display: block; margin: auto;" /></p>
+</div>
+<div class="col-md-6">
+<p>Goals:</p>
+<ol class="incremental" style="list-style-type: decimal">
+<li>Create a new R markdown document</li>
+<li>Load some data</li>
+<li>Show a figure, and report some descriptive statistics</li>
+</ol>
+</div>
+</div>
+</div>
+<div id="r-markdown-details" class="slide section level2">
+<h1>R Markdown details</h1>
+<ol class="incremental" style="list-style-type: decimal">
+<li>YAML Front Matter</li>
+<li>Setup Chunk</li>
+<li>R code snippets</li>
+<li>Code snippet knitr options</li>
+<li>Tips and tricks</li>
+</ol>
+</div>
+<div id="yaml-front-matter" class="slide section level2">
+<h1>YAML Front matter</h1>
+<div class="row">
+<div class="col-md-6">
+<p>“YAML Ain’t Markup Language”</p>
+<p><img src="/Users/mattcrump/Github/verticaltutorial/slides/imgs/Rmarkdown/yaml.png" width="100%" style="display: block; margin: auto;" /></p>
+</div>
+<div class="col-md-6">
+<p>YAML is used to declare global parameters for the document.</p>
+<p>This often includes title, author, bibliography files, and output formats.</p>
+<p>There may be many more parameters depending on the template file used for the R Markdown document.</p>
+</div>
+</div>
+</div>
+<div id="setup-chunk" class="slide section level2">
+<h1>Setup chunk</h1>
+<div class="row">
+<div class="col-md-6">
+<p>Set defaults for all R code chunks in setup chunk at the beginning</p>
+<p><img src="/Users/mattcrump/Github/verticaltutorial/slides/imgs/Rmarkdown/setup_chunk.png" width="100%" style="display: block; margin: auto;" /></p>
+</div>
+<div class="col-md-6">
+<p>Defaults can be modified for individual chunks later on.</p>
+<ul class="incremental">
+<li>echo = FALSE, prevents displaying R output</li>
+<li>warning = FALSE, prevents printing of R warnings</li>
+<li>message = FALSE&lt; prevents printing of R messages (e.g., fairly common when loading some packages)</li>
+<li>fig.align = “center”, all figures will be center aligned</li>
+<li>cache = FALSE, turns off caching of results</li>
+<li>out.width = “100%”, figure width is 100% of screen</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="r-code-snippets" class="slide section level2">
+<h1>R Code snippets</h1>
+<div class="row">
+<div class="col-md-6">
+<p><img src="/Users/mattcrump/Github/verticaltutorial/slides/imgs/Rmarkdown/snippets.png" width="100%" style="display: block; margin: auto;" /></p>
+</div>
+<div class="col-md-6">
+<ol class="incremental" style="list-style-type: decimal">
+<li>Correctly defined code-chunks appear in a grey-box</li>
+<li>Option-command-I to automatically create chunk in R Studio (Ctrl-Alt-I on PC)</li>
+<li>Press play button to run the chunk. Output appears below the chunk in the editor window.</li>
+</ol>
+</div>
+</div>
+</div>
+<div id="anatomy-of-a-code-chunk" class="slide section level2">
+<h1>Anatomy of a code chunk</h1>
+<p><img src="/Users/mattcrump/Github/verticaltutorial/slides/imgs/Rmarkdown/chunk_anatomy.png" width="100%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="knitr-output-options" class="slide section level2">
+<h1>Knitr output options</h1>
+<p><code>knitr</code> is the engine that converts .Rmd files to other file types. Each R code chunk is processed by knitr, and can take on options to control outputs.</p>
+<ul class="incremental">
+<li><code>echo=TRUE</code> sets the default to print all remaining code blocks to the output, <code>FALSE</code> sets the default to not print the code blocks</li>
+<li><code>warning = FALSE</code> turns off printing of warnings</li>
+<li><code>message = FALSE</code> turns off printing of messages, these commonly occur when you load a package, where you receive a message that the package was loaded</li>
+<li><code>eval = FALSE</code> sets the default to <strong>NOT</strong> evaluate the code chunk as R Code. This will not run the code block, but the code block will still print if <code>echo=TRUE</code></li>
+<li><code>error=TRUE</code> normally the knit fails when there is an error in the code. If you set <code>error=TRUE</code> the knit will complete, and return an error message for code blocks with errors.</li>
+</ul>
+</div>
+<div id="knitr-figure-output-options" class="slide section level2">
+<h1>knitr figure output options</h1>
+<p>The following setup options are useful for figure output.</p>
+<ul class="incremental">
+<li><code>fig.width = 3</code> sets the default width in inches for all figures</li>
+<li><code>fig.height = 3</code> sets the default height in inches for all figures</li>
+<li><code>fig.path = "myfigs/"</code> defines folder where figure files will be saved. This will be relative to your current working directoy</li>
+<li><code>dev = c("pdf", "png")</code> tells knitr to output both .png, and .pdf versions of the figure. The .pdf contains vector graphics, meaning the figure can be resized without pixelization.</li>
+</ul>
+</div>
+<div id="knitting-press-knit-to-compile-your-document" class="slide section level2">
+<h1>Knitting (press knit to compile your document)</h1>
+<video id="knit" src="imgs/knit.mov" controls>
+</video>
+</div>
+<div id="important-knitting-info" class="slide section level2">
+<h1>IMPORTANT KNITTING INFO</h1>
+<ol class="incremental" style="list-style-type: decimal">
+<li><strong>Knitting is done in a separate R session behind the scenes</strong></li>
+<li>Code snippets are compiled in order from top-to-bottom</li>
+<li>Knitting can be automated with the <code>knitr::render()</code> function, pressing the knit button in RStudio is a built-in way to call the <code>render</code> function for the current document.</li>
+</ol>
+</div>
+<div id="why-wont-this-knit" class="slide section level2">
+<h1>Why won’t this knit?</h1>
+<div class="row">
+<div class="col-md-6">
+<p><img src="/Users/mattcrump/Github/verticaltutorial/slides/imgs/Rmarkdown/kniterror.png" width="100%" style="display: block; margin: auto;" /></p>
+</div>
+<div class="col-md-6">
+<p>Pressing the play button might show the graph, but compiling fails when knitting the document?</p>
+<ol class="incremental" style="list-style-type: decimal">
+<li>the call to <code>ggplot()</code> occurs in chunk 1 before the package is loaded in chunk 2, causing an error.</li>
+<li>The <code>ggplot2</code> package may be loaded in the current R session, allowing it to run the first chunk.</li>
+</ol>
+</div>
+</div>
+</div>
+<div id="assorted-info" class="slide section level2">
+<h1>Assorted info</h1>
+<ul class="incremental">
+<li>Hit tab inside quotations to search for files in RStudio</li>
+</ul>
+<p><img src="/Users/mattcrump/Github/verticaltutorial/slides/imgs/Rmarkdown/tab.png" width="50%" style="display: block; margin: auto;" /></p>
+<ul class="incremental">
+<li>including external graphics
+<ul class="incremental">
+<li><code>knitr::include_graphics("path/name.ext")</code></li>
+</ul></li>
+<li>math equations
+<ul class="incremental">
+<li>surround equations with dollar signs</li>
+<li>e.g., <code>$\sum$</code> will be printed as <span class="math inline">\(\sum\)</span></li>
+</ul></li>
+<li>HTML and Latex can be written directly
+<ul class="incremental">
+<li>e.g., <code>&lt;p&gt; paragraph element &lt;/p&gt;</code> will be inserted as a new paragraph element</li>
+<li>Note: will only work if the hard coded elements are the same as the output type</li>
+</ul></li>
+<li>Latex installation for pdf rendering
+<ul class="incremental">
+<li>Rendering pdfs requires a latex installation (full installations can be fairly large ~1 to 2 GB)</li>
+<li>I’d recommend following <code>papaja</code> recommendations here for installing latex <a href="https://crsh.github.io/papaja_man/introduction.html#software-requirements" class="uri">https://crsh.github.io/papaja_man/introduction.html#software-requirements</a></li>
+<li>easy answer is install the <code>tinytex</code> package</li>
+<li>long answer is install a full latex distribution if you are going to be using latex outside of R.</li>
+</ul></li>
+</ul>
+</div>
+<div id="multi-column" class="slide section level2">
+<h1>Multi column</h1>
+<div class="row">
+<div class="col-md-6">
+
+</div>
+<div class="col-md-6">
+
+</div>
+</div>
+<ul class="incremental">
+<li>basic idea of rmarkdown
+<ul class="incremental">
+<li><h2 id="rstudio-overview">Rstudio overview</h2></li>
+</ul></li>
+<li>make a new rmd
+<ul class="incremental">
+<li>working in a project</li>
+</ul></li>
+<li>knitting</li>
+</ul>
+</div>
+
+  <!-- dynamically load mathjax for compatibility with self-contained -->
+  <script>
+    (function () {
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+      document.getElementsByTagName("head")[0].appendChild(script);
+    })();
+  </script>
+
+</body>
+</html>

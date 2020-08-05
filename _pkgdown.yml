@@ -28,8 +28,16 @@ navbar:
     slides:
       text: Slides
       menu:
-      - text: R Markdown slides
-        href: slides/slides.html
+      - text: Vertical overview
+        href: slides/vertical_overview.html
+      - text: Github
+        href: slides/Github.html
+      - text: R Markdown
+        href: slides/RMarkdown.html
+      - text: APA papers with papaja
+        href: slides/apa_papers.html
+      - text: R Packages
+        href: slides/RPackages.html
     posters:
       text: Posters
       menu:
