@@ -261,7 +261,7 @@ devtools::document()
 
 ## Reproducibility considerations
 
-If you are using **vertical** for a psych project, you may raw data. The R package suggestion is to store raw data in the `data-raw` folder.
+If you are using **vertical** for a psych project, you may have raw data. The R package suggestion is to store raw data in the `data-raw` folder.
 
 Data stored in `data-raw` is not included in the R package. The suggestion is to include a pre-processing script in `data-raw` that shows how you import the data into R. Once the data is in R, you can include it in the package using the previous steps.
 
@@ -371,7 +371,6 @@ You can automatically create a new vignette with `usethis`:
 usethis::use_vignette('filename')
 ```
 
-We discuss R Markdown in the next module.
 
 
 ## Multi column

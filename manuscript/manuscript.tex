@@ -3,7 +3,8 @@
 \PassOptionsToPackage{hyphens}{url}
 %
 \documentclass[
-  man,floatsintext]{apa6}
+  english,
+  man]{apa6}
 \usepackage{lmodern}
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
@@ -37,7 +38,8 @@
 \IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
 \hypersetup{
   pdftitle={The title},
-  pdfauthor={First Author~\& Ernst-August Doelle},
+  pdfauthor={First Author1 \& Ernst-August Doelle1,2},
+  pdflang={en-EN},
   pdfkeywords={keywords},
   hidelinks,
   pdfcreator={LaTeX via pandoc}}
@@ -59,34 +61,75 @@
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \setcounter{secnumdepth}{-\maxdimen} % remove section numbering
-\shorttitle{Title}
-\affiliation{
-\vspace{0.5cm}
-\textsuperscript{1} Wilhelm-Wundt-University\\\textsuperscript{2} Konstanz Business School}
-\keywords{keywords\newline\indent Word count: X}
-\usepackage{csquotes}
+% Make \paragraph and \subparagraph free-standing
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+% Manuscript styling
 \usepackage{upgreek}
 \captionsetup{font=singlespacing,justification=justified}
 
+% Table formatting
 \usepackage{longtable}
 \usepackage{lscape}
-\usepackage{multirow}
-\usepackage{tabularx}
-\usepackage[flushleft]{threeparttable}
-\usepackage{threeparttablex}
+% \usepackage[counterclockwise]{rotating}   % Landscape page setup for large tables
+\usepackage{multirow}		% Table styling
+\usepackage{tabularx}		% Control Column width
+\usepackage[flushleft]{threeparttable}	% Allows for three part tables with a specified notes section
+\usepackage{threeparttablex}            % Lets threeparttable work with longtable
 
+% Create new environments so endfloat can handle them
+% \newenvironment{ltable}
+%   {\begin{landscape}\begin{center}\begin{threeparttable}}
+%   {\end{threeparttable}\end{center}\end{landscape}}
 \newenvironment{lltable}{\begin{landscape}\begin{center}\begin{ThreePartTable}}{\end{ThreePartTable}\end{center}\end{landscape}}
 
+% Enables adjusting longtable caption width to table width
+% Solution found at http://golatex.de/longtable-mit-caption-so-breit-wie-die-tabelle-t15767.html
 \makeatletter
 \newcommand\LastLTentrywidth{1em}
 \newlength\longtablewidth
 \setlength{\longtablewidth}{1in}
 \newcommand{\getlongtablewidth}{\begingroup \ifcsname LT@\roman{LT@tables}\endcsname \global\longtablewidth=0pt \renewcommand{\LT@entry}[2]{\global\advance\longtablewidth by ##2\relax\gdef\LastLTentrywidth{##2}}\@nameuse{LT@\roman{LT@tables}} \fi \endgroup}
 
+% \setlength{\parindent}{0.5in}
+% \setlength{\parskip}{0pt plus 0pt minus 0pt}
 
+% \usepackage{etoolbox}
+\makeatletter
+\patchcmd{\HyOrg@maketitle}
+  {\section{\normalfont\normalsize\abstractname}}
+  {\section*{\normalfont\normalsize\abstractname}}
+  {}{\typeout{Failed to patch abstract.}}
+\patchcmd{\HyOrg@maketitle}
+  {\section{\protect\normalfont{\@title}}}
+  {\section*{\protect\normalfont{\@title}}}
+  {}{\typeout{Failed to patch title.}}
+\makeatother
+\shorttitle{Title}
+\keywords{keywords\newline\indent Word count: X}
+\DeclareDelayedFloatFlavor{ThreePartTable}{table}
+\DeclareDelayedFloatFlavor{lltable}{table}
+\DeclareDelayedFloatFlavor*{longtable}{table}
+\makeatletter
+\renewcommand{\efloat@iwrite}[1]{\immediate\expandafter\protected@write\csname efloat@post#1\endcsname{}}
+\makeatother
 \usepackage{lineno}
 
 \linenumbers
+\usepackage{csquotes}
+\ifxetex
+  % Load polyglossia as late as possible: uses bidi with RTL langages (e.g. Hebrew, Arabic)
+  \usepackage{polyglossia}
+  \setmainlanguage[]{english}
+\else
+  \usepackage[shorthands=off,main=english]{babel}
+\fi
 \newlength{\cslhangindent}
 \setlength{\cslhangindent}{1.5em}
 \newenvironment{cslreferences}%
@@ -95,14 +138,21 @@
   {\par}
 
 \title{The title}
-\author{First Author\textsuperscript{1}~\& Ernst-August Doelle\textsuperscript{1,2}}
+\author{First Author\textsuperscript{1} \& Ernst-August Doelle\textsuperscript{1,2}}
 \date{}
 
-\authornote{Add complete departmental affiliations for each author here. Each new line herein must be indented, like this line.
+
+\authornote{
+
+Add complete departmental affiliations for each author here. Each new line herein must be indented, like this line.
 
 Enter author note here.
 
-Correspondence concerning this article should be addressed to First Author, Postal address. E-mail: \href{mailto:my@email.com}{\nolinkurl{my@email.com}}}
+Correspondence concerning this article should be addressed to First Author, Postal address. E-mail: \href{mailto:my@email.com}{\nolinkurl{my@email.com}}
+
+}
+
+\affiliation{\vspace{0.5cm}\textsuperscript{1} Wilhelm-Wundt-University\\\textsuperscript{2} Konstanz Business School}
 
 \abstract{
 One or two sentences providing a \textbf{basic introduction} to the field, comprehensible to a scientist in any discipline.
@@ -118,9 +168,9 @@ Two or three sentences explaining what the \textbf{main result} reveals in direc
 One or two sentences to put the results into a more \textbf{general context}.
 
 Two or three sentences to provide a \textbf{broader perspective}, readily comprehensible to a scientist in any discipline.
-
-
 }
+
+
 
 \begin{document}
 \maketitle
@@ -202,7 +252,7 @@ We report how we determined our sample size, all data exclusions (if any), all m
 \hypertarget{data-analysis}{%
 \subsubsection{Data analysis}\label{data-analysis}}
 
-We used R (Version 3.6.0; R Core Team, 2019) and the R-packages \emph{dplyr} (Version 0.8.3; Wickham et al., 2019), \emph{ggplot2} (Version 3.2.0; Wickham, 2016), \emph{kableExtra} (Version 1.1.0; Zhu, 2019), \emph{papaja} (Version 0.1.0.9842; Aust \& Barth, 2018), \emph{tidyr} (Version 1.0.0; Wickham \& Henry, 2019), and \emph{verticaltutorial} (Version 0.0.0.9000; Crump, n.d.) for all our analyses.
+We used R (Version 3.6.0; R Core Team, 2019) and the R-packages \emph{dplyr} (Version 1.0.1; Wickham et al., 2019), \emph{ggplot2} (Version 3.2.0; Wickham, 2016), \emph{kableExtra} (Version 1.1.0; Zhu, 2019), \emph{papaja} (Version 0.1.0.9997; Aust \& Barth, 2018), \emph{tidyr} (Version 1.1.1; Wickham \& Henry, 2019), and \emph{verticaltutorial} (Version 0.0.0.9000; Crump, n.d.) for all our analyses.
 
 \hypertarget{results}{%
 \subsection{Results}\label{results}}
@@ -210,6 +260,14 @@ We used R (Version 3.6.0; R Core Team, 2019) and the R-packages \emph{dplyr} (Ve
 Content stored in R variables can be injected into the document. However, the R variables must be defined before they can be inserted. For example, the following code chunk assigns a values of 1 to a variable x.
 
 Now, the content of this variable can be reported using an inline r code chunk as follows, the value of x is 1.
+
+\begin{verbatim}
+## Warning: package 'dplyr' was built under R version 3.6.2
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: package 'tidyr' was built under R version 3.6.2
+\end{verbatim}
 
 \begin{table}
 
@@ -234,9 +292,12 @@ Stand & 808 & 15 & 904 & 15\\
 \end{figure}
 
 \begin{table}[tbp]
+
 \begin{center}
 \begin{threeparttable}
+
 \caption{\label{tab:aovtable}ANOVA table for Experiment 3}
+
 \begin{tabular}{lllllll}
 \toprule
 Effect & \multicolumn{1}{c}{$F$} & \multicolumn{1}{c}{$\mathit{df}_1$} & \multicolumn{1}{c}{$\mathit{df}_2$} & \multicolumn{1}{c}{$\mathit{MSE}$} & \multicolumn{1}{c}{$p$} & \multicolumn{1}{c}{$\hat{\eta}^2_G$}\\
@@ -246,8 +307,10 @@ Congruency & 342.45 & 1 & 49 & 1,684.39 & < .001 & .182\\
 Posture $\times$ Congruency & 8.96 & 1 & 49 & 731.82 & .004 & .003\\
 \bottomrule
 \end{tabular}
+
 \end{threeparttable}
 \end{center}
+
 \end{table}
 
 Below are examples of writing the results using two methods. The first method is to report all of the values by hand. The second method is to embed the results of R variables into the reporting using papaja. Both results sections appear similar in the .pdf, so look at the .rmd file for this example to see how to use papaja.
@@ -298,10 +361,10 @@ Aust, F., \& Barth, M. (2018). \emph{papaja: Create APA manuscripts with R Markd
 Crump, M. J. C. (n.d.). \emph{Verticaltutorial: What the package does (one line, title case)}.
 
 \leavevmode\hypertarget{ref-crumpContextualControlTaskset2010}{}%
-Crump, M. J. C., \& Logan, G. D. (2010). Contextual control over task-set retrieval. \emph{Attention, Perception \& Psychophysics}, \emph{72}(8), 2047--2053. doi:\href{https://doi.org/10.3758/APP.72.8.2047}{10.3758/APP.72.8.2047}
+Crump, M. J. C., \& Logan, G. D. (2010). Contextual control over task-set retrieval. \emph{Attention, Perception \& Psychophysics}, \emph{72}(8), 2047--2053. \url{https://doi.org/10.3758/APP.72.8.2047}
 
 \leavevmode\hypertarget{ref-jamiesonMemorybasedAccountRetrospective2010}{}%
-Jamieson, R. K., Hannah, S. D., \& Crump, M. J. C. (2010). A memory-based account of retrospective revaluation. \emph{Canadian Journal of Experimental Psychology}, \emph{64}(3), 153--164. doi:\href{https://doi.org/10.1037/a0020886}{10.1037/a0020886}
+Jamieson, R. K., Hannah, S. D., \& Crump, M. J. C. (2010). A memory-based account of retrospective revaluation. \emph{Canadian Journal of Experimental Psychology}, \emph{64}(3), 153--164. \url{https://doi.org/10.1037/a0020886}
 
 \leavevmode\hypertarget{ref-R-base}{}%
 R Core Team. (2019). \emph{R: A language and environment for statistical computing}. Vienna, Austria: R Foundation for Statistical Computing. Retrieved from \url{https://www.R-project.org/}
@@ -320,5 +383,6 @@ Zhu, H. (2019). \emph{KableExtra: Construct complex table with 'kable' and pipe 
 \end{cslreferences}
 
 \endgroup
+
 
 \end{document}

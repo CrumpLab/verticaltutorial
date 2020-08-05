@@ -122,7 +122,7 @@ Using `knitr::include_graphics()` is a versatile method for inserting external i
 knitr::include_graphics("external_image.png")
 ```
 
-In name for the codechunk above is `vertical`, which can later be used as a cross-reference to figure, see Figure \@ref(fig:vertical).
+The name for the codechunk above is `vertical`, which can later be used as a cross-reference to figure, see Figure \@ref(fig:vertical).
 
 
 # Experiment 1
