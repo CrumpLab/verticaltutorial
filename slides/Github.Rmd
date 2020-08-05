@@ -72,6 +72,9 @@ knitr::include_graphics("imgs/github_connect.png")
 
 Git folders look like normal folders, but have hidden .git files
 
+<div class = "row">
+<div class = "col-md-9">
+
 ```{nomnoml}
 
 [<frame> Normal Folder |
@@ -91,6 +94,13 @@ Git folders look like normal folders, but have hidden .git files
    ]
 
 ```
+
+</div>
+<div class = "col-md-3">
+
+
+</div>
+</div>
 
 ## git folders
 
